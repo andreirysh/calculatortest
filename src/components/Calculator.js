@@ -12,9 +12,18 @@ export default class Calculator {
     }
 
     appendNumber(number) {
-        if (this.currentValue === '0') this.currentValue = ''
-        this.currentValue += number
-        this.updateScreen()
+        if (number === ',') {
+            if (!this.currentValue.includes('.')) {
+                this.currentValue = this.currentValue === '' || this.currentValue === '0' ? '0.' : this.currentValue + '.';
+            }
+        } else {
+            if (this.currentValue === '0') {
+                this.currentValue = number;
+            } else {
+                this.currentValue += number;
+            }
+        }
+        this.updateScreen();
     }
 
     chooseOperation(op) {
@@ -53,6 +62,16 @@ export default class Calculator {
     }
 
     updateScreen() {
-        this.screen.innerText = this.currentValue
+        this.screen.innerText = this.currentValue.replace('.', ',');
+        this.adjustFontSize();
+    }
+
+    adjustFontSize() {
+        const maxLength = 8;
+        if (this.currentValue.length > maxLength) {
+            this.screen.style.fontSize = '2em';
+        } else {
+            this.screen.style.fontSize = '3em';
+        }
     }
 }  
