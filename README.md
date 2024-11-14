@@ -6,7 +6,7 @@
 ### How to run app
 1. Install dependencies: `npm install`
 2. Build the app: `npm run build`
-3. Run the app: open `dist/index.html`
+3. Go to https://andreirysh.github.io/calculatortest to check deployed application
 
 ### Folder Structure
 - `src/`: Contains the main code for the calculator app.
