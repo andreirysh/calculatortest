@@ -61,6 +61,16 @@ export default class Calculator {
         this.updateScreen()
     }
 
+    toggleSign() {
+        if (this.currentValue !== '0') {
+            this.currentValue = this.currentValue.startsWith('-')
+                ? this.currentValue.slice(1)
+                : '-' + this.currentValue;
+            this.updateScreen();
+        }
+    }
+
+
     updateScreen() {
         this.screen.innerText = this.currentValue.replace('.', ',');
         this.adjustFontSize();
